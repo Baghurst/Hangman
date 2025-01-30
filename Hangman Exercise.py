@@ -6,13 +6,15 @@
 word = "monday"
 lifes = 7
 entered_letters = ""
-#print(word[0], word[5])
 print('_'*len(word))
+success = '_'*len(word)
 guess = input("Guess a letter: ").lower()
 entered_letters = entered_letters + guess
 while lifes > 0:
     if guess in word:
-        print(f"Well done! {guess} is in the word!")
+        locationOfLetterInWord = word.find(guess)
+        success = success[0:locationOfLetterInWord]+guess+success[locationOfLetterInWord+1:]
+        print(f"Well done! {guess} is in the word: ",success)
         print(f"You have {lifes} lifes left!")
     elif guess not in word:
         print(f"Sorry, {guess} is not in the word, try again!")
